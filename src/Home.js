@@ -1,10 +1,20 @@
 import React from 'react';
+import HeroSection from './components/HeroSection';
+import Services from './components/Services';
+import Trusted from './components/Trusted';
 
 const Home = () => {
-    return (
-        <div> Home
-        </div>
-    )
-}
+    const data = {
+        name: "Shop Sphere",
+    };
+    
+     return (
+      <>
+        <HeroSection myData={data} />;
+        <Services />
+        <Trusted /> 
+      </>
+     )
+};
 
 export default Home;
