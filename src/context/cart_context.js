@@ -4,12 +4,16 @@ import reducer from "../reducer/cartReducer";
 const CartContext = createContext();
 
 const getLocalCartData = () => {
-  let localCartData = localStorage.getItem("shopCart");
-  if (localCartData == []) {
-    return [];
-  } else {
-    return JSON.parse(localCartData);
-  }
+  let localCartData = localStorage.getItem("thapaCart");
+  // if (localCartData === []) {
+  //   return [];
+  // } else {
+  //   return JSON.parse(localCartData);
+  // }
+  const parsedData = JSON.parse(localCartData);
+  if (!Array.isArray(parsedData)) return [];
+
+  return parsedData;
 };
 
 const initialState = {
@@ -55,7 +59,7 @@ const CartProvider = ({ children }) => {
     // dispatch({ type: "CART_TOTAL_PRICE" });
     dispatch({ type: "CART_ITEM_PRICE_TOTAL" });
 
-    localStorage.setItem("shopCart", JSON.stringify(state.cart));
+    localStorage.setItem("thapaCart", JSON.stringify(state.cart));
   }, [state.cart]);
 
   return (
